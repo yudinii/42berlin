@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yujkim <yujkim@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 13:29:51 by yujkim            #+#    #+#             */
-/*   Updated: 2024/04/29 13:29:53 by yujkim           ###   ########.fr       */
+/*   Created: 2024/05/13 14:51:33 by yujkim            #+#    #+#             */
+/*   Updated: 2024/05/13 14:51:35 by yujkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
+//#include <unistd.h>
 //#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
-
-	i = ft_strlen((char *)str);
-	str += i;
-	while (i >= 0)
+	if (n == -2147483648)
 	{
-		if (*str == (char) c)
-			return ((char *)str);
-		i--;
-		str--;
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		ft_putnbr_fd(147483648, fd);
 	}
-	return (NULL);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(n * -1, fd);
+	}
+	else if (n < 10)
+		ft_putchar_fd((char)(n + '0'), fd);
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
 }
-/*int	main(void)
-{
-	char a[] = "yujinkimkim";
-
-	printf("mine: %s\n", ft_strrchr(a, 'k'));
-	printf("mine: %s\n", strrchr(a, 'k'));
-
-	return (0);
-}*/

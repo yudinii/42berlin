@@ -13,26 +13,30 @@
 //# include <string.h>
 //# include <stdio.h>
 //# include <unistd.h>
+#include "libft.h"
 
-unsigned int	ft_strlcat(char *dest, const char *src, unsigned int n)
+size_t	ft_strlcat(char *dest, const char *src, size_t n)
 {
-	int	s_len;
-	int	d_initial_len;
-	int	d_final_len;
+	size_t	temp;
 
-	s_len = 0;
-	d_initial_len = ft_strlen(dest);
-	d_final_len = ft_strlen(dest);
-	while (s_len < n - 1)
+	temp = ft_strlen(dest) + ft_strlen((char *)src);
+	if (ft_strlen(dest) < n)
 	{
-		dest[d_final_len] = src[s_len];
-		d_final_len++;
-		s_len++;
+		n = n - ft_strlen(dest) - 1;
+		dest = dest + ft_strlen(dest);
+		while (*src != 0)
+		{
+			if (n <= 0)
+				break ;
+			else
+				*dest++ = *src++;
+			n--;
+		}
+		*dest = '\0';
+		return (temp);
 	}
-	dest[d_final_len] = '\0';
-	while (src[s_len] != '\0')
-		s_len++;
-	return (d_initial_len + s_len);
+	else
+		return (ft_strlen((char *)src) + n);
 }
 /*int	main(void)
 {

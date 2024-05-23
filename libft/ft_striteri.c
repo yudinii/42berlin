@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yujkim <yujkim@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 13:29:51 by yujkim            #+#    #+#             */
-/*   Updated: 2024/04/29 13:29:53 by yujkim           ###   ########.fr       */
+/*   Created: 2024/05/13 14:12:14 by yujkim            #+#    #+#             */
+/*   Updated: 2024/05/13 14:12:15 by yujkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
 //#include <stdio.h>
+//#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int	i;
 
-	i = ft_strlen((char *)str);
-	str += i;
-	while (i >= 0)
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i] != '\0')
 	{
-		if (*str == (char) c)
-			return ((char *)str);
-		i--;
-		str--;
+		f(i, &s[i]);
+		i++;
 	}
-	return (NULL);
 }
-/*int	main(void)
-{
-	char a[] = "yujinkimkim";
-
-	printf("mine: %s\n", ft_strrchr(a, 'k'));
-	printf("mine: %s\n", strrchr(a, 'k'));
-
-	return (0);
-}*/

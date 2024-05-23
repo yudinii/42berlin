@@ -12,17 +12,23 @@
 
 //#include <string.h>
 //#include <stdio.h>
+#include "libft.h"
 
 char	*ft_strchr(const char *str, int c)
 {
+	unsigned char	i;
+
+	i = (unsigned char)c;
 	while (*str != '\0')
 	{
-		if (*str == c)
+		if (*str == i)
 			return ((char *)str);
 		else
 			str++;
 	}
-	return (0);
+	if (i == '\0')
+		return ((char *)str);
+	return (NULL);
 }
 /*int	main(void)
 {

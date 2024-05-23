@@ -1,54 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yujkim <yujkim@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 15:23:42 by yujkim            #+#    #+#             */
-/*   Updated: 2024/04/27 15:23:44 by yujkim           ###   ########.fr       */
+/*   Created: 2024/05/08 15:57:56 by yujkim            #+#    #+#             */
+/*   Updated: 2024/05/08 15:57:57 by yujkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <string.h>
+//#include <stdlib.h>
 //#include <stdio.h>
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	char	*d;
-	char	*s;
+	char	*result;
+	int		i;
+	int		j;
+	int		len_s1;
+	int		len_s2;
 
 	i = 0;
-	if (!dest && !src)
+	j = 0;
+	len_s1 = ft_strlen((char *)s1);
+	len_s2 = ft_strlen((char *)s2);
+	result = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	if (!result)
 		return (NULL);
-	d = dest;
-	s = (char *)src;
-	if (s < d)
+	while (s1[i] != '\0')
 	{
-		while (n-- > 0)
-			d[n] = s[n];
+		result[i] = s1[i];
+		i++;
 	}
-	else
+	while (s2[j] != '\0')
 	{
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		result[i + j] = s2[j];
+		j++;
 	}
-	return (dest);
+	result[i + j] = '\0';
+	return (result);
 }
 /*int	main(void)
 {
-	char	a[] = "my name is yujin";
-	char	b[] = "kim";
+	char	a[] = "i_want_to_";
+	char	b[] = "finish_libft";
 
-	//memmove(a+11, b, sizeof(char)*3);
-	ft_memmove(a+11, b, sizeof(char)*3);
-
-	printf("a:%s\n", a);
-	printf("b:%s\n", b);
-	return(0);
+	printf("%s\n", ft_strjoin(a, b));
+	return (0);
 }*/

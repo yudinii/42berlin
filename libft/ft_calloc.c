@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yujkim <yujkim@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 13:29:51 by yujkim            #+#    #+#             */
-/*   Updated: 2024/04/29 13:29:53 by yujkim           ###   ########.fr       */
+/*   Created: 2024/05/04 14:48:51 by yujkim            #+#    #+#             */
+/*   Updated: 2024/05/04 14:48:53 by yujkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
-//#include <stdio.h>
+//#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int	i;
+	void	*result;
 
-	i = ft_strlen((char *)str);
-	str += i;
-	while (i >= 0)
-	{
-		if (*str == (char) c)
-			return ((char *)str);
-		i--;
-		str--;
-	}
-	return (NULL);
+	if ((nmemb && size) && ((nmemb * size < size) || (nmemb * size < nmemb)))
+		return (0);
+	result = malloc(nmemb * size);
+	if (!result)
+		return (0);
+	ft_bzero(result, (nmemb * size));
+	return (result);
 }
-/*int	main(void)
-{
-	char a[] = "yujinkimkim";
-
-	printf("mine: %s\n", ft_strrchr(a, 'k'));
-	printf("mine: %s\n", strrchr(a, 'k'));
-
-	return (0);
-}*/

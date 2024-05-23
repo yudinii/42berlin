@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yujkim <yujkim@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 13:29:51 by yujkim            #+#    #+#             */
-/*   Updated: 2024/04/29 13:29:53 by yujkim           ###   ########.fr       */
+/*   Created: 2024/05/13 14:46:31 by yujkim            #+#    #+#             */
+/*   Updated: 2024/05/13 14:46:33 by yujkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
+//#include <unistd.h>
 //#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
-
-	i = ft_strlen((char *)str);
-	str += i;
-	while (i >= 0)
+	if (s)
 	{
-		if (*str == (char) c)
-			return ((char *)str);
-		i--;
-		str--;
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
 	}
-	return (NULL);
 }
-/*int	main(void)
-{
-	char a[] = "yujinkimkim";
-
-	printf("mine: %s\n", ft_strrchr(a, 'k'));
-	printf("mine: %s\n", strrchr(a, 'k'));
-
-	return (0);
-}*/

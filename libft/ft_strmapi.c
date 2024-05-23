@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yujkim <yujkim@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 13:29:51 by yujkim            #+#    #+#             */
-/*   Updated: 2024/04/29 13:29:53 by yujkim           ###   ########.fr       */
+/*   Created: 2024/05/13 13:51:05 by yujkim            #+#    #+#             */
+/*   Updated: 2024/05/13 13:51:06 by yujkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
 //#include <stdio.h>
+//#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	char			*result;
+	unsigned int	i;
 
-	i = ft_strlen((char *)str);
-	str += i;
-	while (i >= 0)
+	if (!s)
+		return (NULL);
+	result = (char *)malloc((ft_strlen((char *)s) + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (i < ft_strlen((char *)s))
 	{
-		if (*str == (char) c)
-			return ((char *)str);
-		i--;
-		str--;
+		result[i] = f(i, s[i]);
+		i++;
 	}
-	return (NULL);
+	result[i] = '\0';
+	return (result);
 }
-/*int	main(void)
-{
-	char a[] = "yujinkimkim";
-
-	printf("mine: %s\n", ft_strrchr(a, 'k'));
-	printf("mine: %s\n", strrchr(a, 'k'));
-
-	return (0);
-}*/

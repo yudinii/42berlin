@@ -1,40 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yujkim <yujkim@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 13:29:51 by yujkim            #+#    #+#             */
-/*   Updated: 2024/04/29 13:29:53 by yujkim           ###   ########.fr       */
+/*   Created: 2024/05/13 14:23:20 by yujkim            #+#    #+#             */
+/*   Updated: 2024/05/13 14:23:21 by yujkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
+//#include <unistd.h>
 //#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	i;
-
-	i = ft_strlen((char *)str);
-	str += i;
-	while (i >= 0)
-	{
-		if (*str == (char) c)
-			return ((char *)str);
-		i--;
-		str--;
-	}
-	return (NULL);
+	write (fd, &c, 1);
 }
-/*int	main(void)
-{
-	char a[] = "yujinkimkim";
-
-	printf("mine: %s\n", ft_strrchr(a, 'k'));
-	printf("mine: %s\n", strrchr(a, 'k'));
-
-	return (0);
-}*/
