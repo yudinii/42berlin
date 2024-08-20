@@ -11,7 +11,18 @@
 /* ************************************************************************** */
 
 //#include "libftprintf.h"
-#include "stdio.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdarg.h>
+
+int	main(void)
+{
+	printf("[%-+d10]\n", 1992);
+	printf("[%+010d]\n", 1992);
+	//printf("[%-+010d]\n", -1992);
+	printf("[%+010d]\n", 1992);
+}
 
 /*int	ft_printf(const char *format, ...)
 {
@@ -20,22 +31,3 @@
 	va_list ap;
 	va_start(ap,) ;
 }*/
-
-int	main(void)
-{
-	//printf("%s\n", "flounder", "catfish", "clownfish", "shark");
-	//printf("%s\n", "flounder" "catfish" "clownfish" "shark");
-	printf("n: %s\n", "flounder catfish clownfish shark");
-	printf("\"%s\"\n", "flounder catfish clownfish shark");
-	printf("%s\\\n", "flounder catfish clownfish shark");
-	printf("a: %s\a\n", "flounder catfish clownfish shark");
-	printf("b: %s\b\n", "flounder catfish clownfish shark");
-	//printf("%s\c", "flounder catfish clownfish shark");
-	printf("e: %s\e\n", "flounder catfish clownfish shark");
-	printf("r: %s\r\n", "flounder catfish clownfish shark");
-	printf("t: %s\t\n", "flounder catfish clownfish shark");
-	printf("v: %s\v\n", "flounder catfish clownfish shark"); 
-	printf("%s\t%s\n", "flounder", "fish");
-
-	return (0);
-}
