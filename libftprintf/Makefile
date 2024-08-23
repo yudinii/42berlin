@@ -10,12 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
+NAME = libftprintf.a
+
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-NAME = libftprintf.a
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_printf_char.c ft_printf_dec.c ft_printf_hex.c ft_printf_str.c ft_printf_unsigned_dec.c ft_printf_ptr.c ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c
+OBJS = $(SRCS:.c=.o)
 HEADER = libftprintf.h
-LIB = libftprintf.a
 
 all: $(NAME)
 
